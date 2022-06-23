@@ -1,3 +1,7 @@
+let from;
+let to;
+let type;
+let time;
 
 function importarChat(mensagem){
 
@@ -66,7 +70,7 @@ function fTeste(resposta){
     console.log(resposta.data.length)
 }
 
-importandoMensagemAPI()
+
 /*
 let objeto1 = {info1: 1, info2:2, info3:3}
 let objeto2 = {info1: 10, info2:20, info3:30}
@@ -78,3 +82,22 @@ let listaObjetos = [objeto1, objeto2]
 		type: "status",
 		time: "08:01:17"
 */
+function enviarTexto(){
+    
+    if(document.querySelector("input").value !== ""){
+
+    let textoTotal= { 
+        from:"Perera",
+        to:"Todos",
+        text: document.querySelector("input").value,
+        type:"status",
+        time:"08:01:17"
+    }
+    console.log(textoTotal);
+    }   
+}
+function pegaNome(){
+    from = prompt("Para entrar no chat precisaremos do seu nome ou numero do cartão");
+}
+
+importandoMensagemAPI()
