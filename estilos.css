@@ -63,8 +63,36 @@ body{
     margin-right: 17px;
     
 }
-.caixa-mensagem{
+input{
+    
+    color: #171717;
+    font-style: normal !important;
+    font-weight: 600;
+    height: 18vw;
+    width: 70vw;
+    
+    display: inline-block;
+    border: 0;
+    box-sizing: border-box;
+      
+}
+input:focus{
+    
+    outline: none;
+    
+}
+
+input[placeholder="Escreva aqui..."]{
+
     font-style: italic;
+    font-weight: 400;
+    font-size: 18px;
+   
+}
+
+
+.caixa-mensagem{
+
     font-weight: 400;
     font-size: 18px;
     margin-left: 17px;
@@ -72,7 +100,7 @@ body{
 
 .caixa-batepapo{
     width: 100%;
-    height: 1000px;
+    height: 100%;
     background-color: #F3F3F3;
     margin-top: 80px;
     padding-top: 26px;    
@@ -100,4 +128,11 @@ body{
 }
 .mensagem mensagem{
     margin-left: 3px;
+}
+.status{
+    background-color: #DCDCDC;
+}
+.private_message{
+    background-color: #FFDEDE;
+    
 }
