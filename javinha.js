@@ -112,6 +112,8 @@ function pegaNome(){
 
       promise.catch(quandoErro);
 
+      importandoMensagemAPI()
+
       
 }
 function quandoSucesso(){
@@ -123,7 +125,7 @@ function quandoErro(){
  }
  pegaNome()
 
- setInterval( importandoMensagemAPI, 1000);
+ setInterval( importandoMensagemAPI, 3000);
  setInterval( toLigado, 5000);
  function toLigado(){
     const testeee = {
