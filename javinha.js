@@ -1,5 +1,5 @@
-let from;
-let to;
+let from = "zezin doido";
+let to = "Todos";
 let type;
 let time;
 
@@ -9,6 +9,7 @@ function importarChat(mensagem){
     console.log(mensagem.data)
 
     const linhaMensagem = document.querySelector(".caixa-batepapo")
+    linhaMensagem.innerHTML = ""
 
     for (let i = 0; i < mensagem.data.length; i++){
 
@@ -65,12 +66,6 @@ function importandoMensagemAPI(){
     const teste = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages')
     teste.then(importarChat)
 }
-
-function fTeste(resposta){
-    console.log(resposta.data.length)
-}
-
-
 /*
 let objeto1 = {info1: 1, info2:2, info3:3}
 let objeto2 = {info1: 10, info2:20, info3:30}
@@ -87,17 +82,57 @@ function enviarTexto(){
     if(document.querySelector("input").value !== ""){
 
     let textoTotal= { 
-        from:"Perera",
+        from:from,
         to:"Todos",
         text: document.querySelector("input").value,
-        type:"status",
-        time:"08:01:17"
+        type:"message",
     }
-    console.log(textoTotal);
+
+    const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', textoTotal);
+
+    promessa.then(quandoSucesso);
+    promessa.catch(quandoErro);
+
+    text: document.querySelector("input").value = ""
+  
     }   
 }
 function pegaNome(){
     from = prompt("Para entrar no chat precisaremos do seu nome ou numero do cartão");
-}
+    const testeee = {
+        name:from
+    }
 
-importandoMensagemAPI()
+    let promise = axios.post(
+        "https://mock-api.driven.com.br/api/v6/uol/participants",
+        testeee
+      );
+
+      promise.then(quandoSucesso);
+
+      promise.catch(quandoErro);
+
+      
+}
+function quandoSucesso(){
+   console.log("deu")
+}
+function quandoErro(){
+    alert("Algo de errado não está certo !?!")
+    pegaNome()
+ }
+ pegaNome()
+
+ setInterval( importandoMensagemAPI, 1000);
+ setInterval( toLigado, 5000);
+ function toLigado(){
+    const testeee = {
+        name:from
+    }
+    let promise = axios.post(
+        "https://mock-api.driven.com.br/api/v6/uol/status",
+        testeee
+      );
+
+      promise.catch(quandoErro);
+ }
