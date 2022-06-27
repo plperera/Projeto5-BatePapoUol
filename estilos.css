@@ -112,6 +112,7 @@ input[placeholder="Escreva aqui..."]{
     margin-top: 80px;
     padding-bottom: 85px;
     padding-top: 26px;    
+
 }
 
 .mensagem{
@@ -151,6 +152,7 @@ mensagem{
     flex-wrap: wrap;
     justify-content: left;
     align-items: center;
+    word-break: break-all;
     
 }
 usuario{

@@ -83,7 +83,7 @@ let listaObjetos = [objeto1, objeto2]
 */
 function enviarTexto(){
     
-    if(document.querySelector("input").value !== ""){
+    if(document.querySelector("input").value !== "" && document.querySelector("input").value !== " " ){
 
     let textoTotal= { 
         from:from,
