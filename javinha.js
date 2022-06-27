@@ -1,6 +1,8 @@
 let from = "zezin doido";
 let to = "Todos";
+//let to = "private_message"
 let type;
+//let type = "private_message";
 let time;
 
 function importarChat(mensagem){
@@ -13,7 +15,7 @@ function importarChat(mensagem){
 
     for (let i = 0; i < mensagem.data.length; i++){
 
-        if (mensagem.data[i].text === "sai da sala..." || mensagem.data[i].text === "entra na sala..." ||  mensagem.data[i].text === "entrou na sala..." ){
+        if (mensagem.data[i].type === "status"){
 
             ///mensagem de status, usar horario + usuario + textoStatus
 
@@ -27,7 +29,7 @@ function importarChat(mensagem){
             
                 </ul>`  
 
-        } else if (mensagem.data[i].type === "private_message"){
+        } else if (mensagem.data[i].type === "private_message" && (from === mensagem.data[i].to || from === mensagem.data[i].from )){
 
             //mensagem privada, mudar o "to" para "reservadamente para"
 
@@ -43,7 +45,7 @@ function importarChat(mensagem){
             
                 </ul>`  
 
-        } else {
+        } else if (mensagem.data[i].type === "message" && mensagem.data[i].to === "Todos") {
 
             //mensagem para alguem especifico, mas nao privada o "alvo"
 
@@ -59,6 +61,8 @@ function importarChat(mensagem){
             
                 </ul>`  
         }
+    
+        document.querySelector(".caixa-batepapo").scrollIntoView({block: "end", inline:"end"});
     }
 }
 function importandoMensagemAPI(){
@@ -87,6 +91,8 @@ function enviarTexto(){
         text: document.querySelector("input").value,
         type:"message",
     }
+
+    console.log(textoTotal)
 
     const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages', textoTotal);
 

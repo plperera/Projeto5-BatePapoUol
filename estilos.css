@@ -110,7 +110,7 @@ input[placeholder="Escreva aqui..."]{
     height: 100%;
     background-color: #F3F3F3;
     margin-top: 80px;
-    margin-bottom: 90px;
+    padding-bottom: 85px;
     padding-top: 26px;    
 }
 
